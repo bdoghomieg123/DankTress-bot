@@ -14,10 +14,37 @@ subreddit = ""
 #This is what the bot will reply on a submission it removes.
 removalComment = ""
 
+
+removalComment2 = ""
+
 #The Flair ID that you want the bot to search for (Note: Different from Flair Class and Flair Text)
 #You can find the Flair ID by going to the submission Flair in your subreddit and clicking "Copy ID"
 flairID = ""
 
+#if you want to search more than one flairs, put the second one here.
+flairID2 = ""
+
+
+def flair2():
+    if flairID2 != "":
+        if submission.link_flair_template_id == flairID2:
+            comment = submission.reply(removalComment)
+            print(f"bot removed and replied to {submission.title}\n\n")
+            posts_replied_to.append(submission.id)
+            try:
+                comment.mod.distinguish(sticky=True)
+                submission.mod.remove()
+                print("Task Completed Successfully\n\n")
+
+            except Exception as e:
+                print(e)
+
+    else:
+        main()
+
+    with open("posts_replied_to.txt", "w") as f:
+        for post_id in posts_replied_to:
+            f.write(post_id + "\n")
 
 
 """DO NOT EDIT BELOW THIS LINE!"""
@@ -46,9 +73,14 @@ def main(subToScan):
                         comment.mod.distinguish(sticky=True)
                         submission.mod.remove()
                         print("Task Completed Successfully\n\n")
+                        flair2()
 
                     except Exception as e:
                         print(e)
+
+                else:
+                    flair2()
+
 
                 with open("posts_replied_to.txt", "w") as f:
                     for post_id in posts_replied_to:
