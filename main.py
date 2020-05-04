@@ -1,30 +1,83 @@
 import praw
 import time
-import datetime
+from datetime import datetime
 import pprint
+import os
+from common import *
 
 reddit = praw.Reddit('bot1')
 
 
-sub_to_scan = ""
-removal_reason = ""
+#Edit this line to the subreddit you want this bot to run on.
+subreddit = ""
 
-def remove(submission):
-    print(submission.title)
-    if (datetime.datetime.now() - datetime.datetime.fromtimestamp(submission.created_utc)).seconds >= 3600 and submission.score < 10:
-            comment = submission.reply(removal_reason)
-            try:
-                comment.mod.distinguish(sticky=True)
-                submission.mod.remove()
-                print("Task Completed Successfully")
-            except Exception as e:
-                print(e)
+#This is what the bot will reply on a submission it removes.
+removalComment = ""
+
+#The Flair ID that you want the bot to search for (Note: Different from Flair Class and Flair Text)
+#You can find the Flair ID by going to the submission Flair in your subreddit and clicking "Copy ID"
+flairID = ""
 
 
-def main(subreddit):
-        while True:
-                for submission in reddit.subreddit(str(subreddit)).new():
-                    remove(submission)
-                time.sleep(60) #waits a minute before re-sifting through posts
 
-main(sub_to_scan) #put the name of the subreddit you want to operate on here
+"""DO NOT EDIT BELOW THIS LINE!"""
+def main(subToScan):
+    print("Bot Logged in")
+    time.sleep(2)
+    clear()
+    subToScan = reddit.subreddit(subreddit)
+    if not os.path.isfile("posts_replied_to.txt"):
+        posts_replied_to = []
+
+    else:
+        with open("posts_replied_to.txt", "r") as f:
+           posts_replied_to = f.read()
+           posts_replied_to = posts_replied_to.split("\n")
+           posts_replied_to = list(filter(None, posts_replied_to))
+
+    while True:
+        for submission in subToScan.new(limit=10):
+            if submission.id not in posts_replied_to:
+                if submission.link_flair_template_id == flairID:
+                    comment = submission.reply(removalComment)
+                    print(f"bot removed and replied to {submission.title}\n\n")
+                    posts_replied_to.append(submission.id)
+                    try:
+                        comment.mod.distinguish(sticky=True)
+                        submission.mod.remove()
+                        print("Task Completed Successfully\n\n")
+
+                    except Exception as e:
+                        print(e)
+
+                with open("posts_replied_to.txt", "w") as f:
+                    for post_id in posts_replied_to:
+                        f.write(post_id + "\n")
+
+
+
+print("Do you wish to delete the cache of posts replied to [Yes/No]?\n\n\n")
+deleteCache = input("It is not reccomended to clear cache. Clearing the cache will create spam\n\n\n")
+print("")
+clear()
+
+if deleteCache.lower() == "y" or "yes":
+    if os.path.isfile("posts_replied_to.txt"):
+        os.remove("posts_replied_to.txt")
+        print("Cache deleted. Bot starting.")
+        time.sleep(3)
+        clear()
+
+    elif not os.path.isfile("posts_replied_to.txt"):
+        print("Cache is already clear or the bot has never been run.\n\nStarting bot.")
+        time.sleep(3)
+        clear()
+
+
+elif deleteCache.lower() == "n" or "no":
+    print("Ok. Keeping Cache and Starting Bot...")
+    time.sleep(3)
+    clear()
+
+
+main(subreddit)

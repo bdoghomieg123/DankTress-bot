@@ -1,5 +1,4 @@
 # How to use
-
 - Install Praw. Do this by going into the command prompt and typing "pip install praw" (note: you must have Python installed to do this, and Python must be added to the PATH variable in Windows.)
 - Create an app in the Reddit settings. To do that, follow these steps:
     - Go to https://www.reddit.com/prefs/apps
@@ -17,16 +16,23 @@
     - Thank You and I hope you enjoy this program!
 
 
+# Personal Modification instructions
+- The lines to modify as well as the instructions on modifying the code is within lines 11-19.
+- Simply add the information requested in each line between the quotes in each line.
+- You do not need to edit anything other than the variables in lines 11-19. The modifications you make in lines 11-19 will be reflected throughout the program.
+
+
+
 # Setting up Praw.ini.
-- You will next need to setup the Praw.ini file. I have included a shell file for you within the files. It is in the folder "init praw file." You will need to rename this file to praw.ini and put it in the same folder as main.py. On many online examples, you'll see people plug their credentials straight into their main python file. I discourage doing that as it just leaves your credentials out in the open for people to see if you share that file with others and forget that your credentials are still in there.
-    - Open the Praw.ini shell file from the repository.
-    - Open the tab with the app you just created.
-    - client_id: 2 spaces underneath your script name is the client_id. Copy and paste that into your Praw.ini file under "client_id"
-    - client_secret: You will see something in the applet page you just created that says "Secret." The code to the right of that is your client secret. Copy and paste that into the client secret portion of the praw.ini file.
+- You will next need to setup the praw.ini file. I have included a template praw.ini for you within this repository. It is in the folder "init praw file." You will need to rename this file to praw.ini and put it in the same folder as main.py. In many other Reddit bots, you will see people plug their credentials straight into their main python file. I highly discourage doing that as it just leaves your credentials out in the open for people to see if you share that file with others and forget that your credentials are still in there.
+    - Open the praw.ini shell file from the repository.
+    - Open the tab with the Reddit developer app you just created.
+    - client_id: 2 spaces underneath your script name is the client_id. Copy and paste that into your Praw.ini file under "client_id."
+    - client_secret: You will a line in the applet page that says "Secret." The code to the right of that is your client secret. Copy and paste that into the client secret portion of the praw.ini file.
     - password: your reddit password
     - username: your reddit username
     - user_agent: Enter jibberish here. I just put "Idk" (without the quotes.)
-    - Put the praw.ini file in the same folder that the main and replier files are. Otherwise, program will have trouble importing it.
+    - Put the praw.ini file in the same folder that the main and replier files are. Otherwise, program will not be able to import it and your program will not run.
 
 
 # Instructions for running bot on Linux.
@@ -53,6 +59,3 @@
 - To install Python3 and Pip on MacOS, follow [this tutorial](https://evansdianga.com/install-pip-osx/).
 
 - After you have installed Python3 and pip for Python3, you can follow the rest of the Linux instructions as they are the same.
-
-# Modification instructions
-- To modify bot, open the "config" file.
