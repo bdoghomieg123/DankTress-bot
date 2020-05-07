@@ -10,9 +10,9 @@ reddit = praw.Reddit('bot1')
 
 RESPONSES = {
 
-        "e75b6020-8be7-11ea-867d-0ef54c455483" : "Flair1 Removal Reason",
-        "c8cf8d3a-9019-11ea-8712-0e5d37b44aaf" : "Flair2 Removal Reason",
-        "d09e6da6-9019-11ea-b15f-0e1cdb868c8f" : "Flair3 Removal Reason",
+        "<Flair ID>" : "Flair1 Removal Comment",
+        "<FLair ID>" : "Flair2 Removal Comment",
+        "<Flair ID>" : "Flair3 Removal Comment",
 
 
 }
