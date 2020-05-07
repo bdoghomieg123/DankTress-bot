@@ -18,7 +18,7 @@ RESPONSES = {
 }
 
 #Edit this line to the subreddit you want this bot to run on.
-subreddit = "bdoghomieg123"
+subreddit = ""
 
 """DO NOT EDIT BELOW THIS LINE!"""
 def main(subToScan):
