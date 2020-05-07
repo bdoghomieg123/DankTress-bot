@@ -8,48 +8,21 @@ from common import *
 reddit = praw.Reddit('bot1')
 
 
+RESPONSES = {
+
+        "e75b6020-8be7-11ea-867d-0ef54c455483" : "Flair1 Removal Reason",
+        "c8cf8d3a-9019-11ea-8712-0e5d37b44aaf" : "Flair2 Removal Reason",
+        "d09e6da6-9019-11ea-b15f-0e1cdb868c8f" : "Flair3 Removal Reason",
+
+
+}
+
 #Edit this line to the subreddit you want this bot to run on.
-subreddit = ""
-
-#This is what the bot will reply on a submission it removes.
-removalComment = ""
-
-
-removalComment2 = ""
-
-#The Flair ID that you want the bot to search for (Note: Different from Flair Class and Flair Text)
-#You can find the Flair ID by going to the submission Flair in your subreddit and clicking "Copy ID"
-flairID = ""
-
-#if you want to search more than one flairs, put the second one here.
-flairID2 = ""
-
-
-def flair2():
-    if flairID2 != "":
-        if submission.link_flair_template_id == flairID2:
-            comment = submission.reply(removalComment2)
-            print(f"bot removed and replied to {submission.title}\n\n")
-            posts_replied_to.append(submission.id)
-            try:
-                comment.mod.distinguish(sticky=True)
-                submission.mod.remove()
-                print("Task Completed Successfully\n\n")
-
-            except Exception as e:
-                print(e)
-
-    else:
-        main()
-
-    with open("posts_replied_to.txt", "w") as f:
-        for post_id in posts_replied_to:
-            f.write(post_id + "\n")
-
+subreddit = "bdoghomieg123"
 
 """DO NOT EDIT BELOW THIS LINE!"""
 def main(subToScan):
-    print("Bot Logged in")
+    print(f"Bot Logged in and searching r/{subreddit}")
     time.sleep(2)
     clear()
     subToScan = reddit.subreddit(subreddit)
@@ -65,21 +38,24 @@ def main(subToScan):
     while True:
         for submission in subToScan.new(limit=10):
             if submission.id not in posts_replied_to:
-                if submission.link_flair_template_id == flairID:
-                    comment = submission.reply(removalComment)
+                if submission.link_flair_text == None:
+                    print("Flair Empty. Skipping post")
+                    posts_replied_to.append(submission.id)
+
+                else:
+                    flair_id = submission.link_flair_template_id
+                    response = RESPONSES.get(flair_id)
+                    comment = submission.reply(response)
                     print(f"bot removed and replied to {submission.title}\n\n")
                     posts_replied_to.append(submission.id)
                     try:
                         comment.mod.distinguish(sticky=True)
                         submission.mod.remove()
-                        print("Task Completed Successfully\n\n")
-                        flair2()
+                        print("Task Completed Successfully\n\n\n\n")
 
                     except Exception as e:
                         print(e)
 
-                else:
-                    flair2()
 
 
                 with open("posts_replied_to.txt", "w") as f:
@@ -88,28 +64,7 @@ def main(subToScan):
 
 
 
-print("Do you wish to delete the cache of posts replied to [Yes/No]?\n\n\n")
-deleteCache = input("It is not reccomended to clear cache. Clearing the cache will create spam\n\n\n")
-print("")
-clear()
 
-if deleteCache.lower() == "y" or "yes":
-    if os.path.isfile("posts_replied_to.txt"):
-        os.remove("posts_replied_to.txt")
-        print("Cache deleted. Bot starting.")
-        time.sleep(3)
-        clear()
-
-    elif not os.path.isfile("posts_replied_to.txt"):
-        print("Cache is already clear or the bot has never been run.\n\nStarting bot.")
-        time.sleep(3)
-        clear()
-
-
-elif deleteCache.lower() == "n" or "no":
-    print("Ok. Keeping Cache and Starting Bot...")
-    time.sleep(3)
-    clear()
 
 
 main(subreddit)
