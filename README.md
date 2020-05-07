@@ -22,7 +22,7 @@
 
 
 # Personal Modification instructions
-- RESPONSES (surrounded by {}) is a dictionary.
+- RESPONSES (surrounded by {} ) is a dictionary.
 
 - To add another flairID : removal reason, uncomment line 15 and fill it in with the same format. If you wish to add more than what is provided, copy and paste one of the previous entries and follow the same format.
 
