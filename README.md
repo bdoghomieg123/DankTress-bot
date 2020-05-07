@@ -1,8 +1,3 @@
-
-
-
-
-
 # How to Run bot
 - Install Praw. Do this by going into the command prompt and typing "pip install praw" (note: you must have Python installed to do this, and Python must be added to the PATH variable in Windows.)
 - Create an app in the Reddit settings. To do that, follow these steps:
@@ -37,7 +32,7 @@
     - Open the praw.ini shell file from the repository.
     - Open the tab with the Reddit developer app you just created.
     - client_id: 2 spaces underneath your script name is the client_id. Copy and paste that into your Praw.ini file under "client_id."
-    - client_secret: You will a line in the applet page that says "Secret." The code to the right of that is your client secret. Copy and paste that into the client secret portion of the praw.ini file.
+    - client_secret: You will see a line in the applet page that says "Secret." The code to the right of that is your client secret. Copy and paste that into the client secret portion of the praw.ini file.
     - password: your reddit password
     - username: your reddit username
     - user_agent: Enter jibberish here. I just put "Idk" (without the quotes.)
@@ -56,8 +51,6 @@
 
 - (Optional) Install Geany text editor for easy code editing and running. I only recommend this text editor because it's easy to use and install, however, this is not an absolutely required step. It's just here if you want it to make running the bot easier. (Please Note: I am not affilated with Geany or its developers in any way, it is just the first text editor that I used when learning how to code and it made running Python scripts easier.)
 
-
-- Setting up the Praw.ini. (See above: Setting up the Praw.ini file.)
 
 - Right click in the folder where main.py is and type: "Python3 main.py" in order to run the file. If you run into any errors, file an issue report.
 
