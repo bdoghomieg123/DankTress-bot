@@ -1,4 +1,9 @@
-# How to use
+
+
+
+
+
+# How to Run bot
 - Install Praw. Do this by going into the command prompt and typing "pip install praw" (note: you must have Python installed to do this, and Python must be added to the PATH variable in Windows.)
 - Create an app in the Reddit settings. To do that, follow these steps:
     - Go to https://www.reddit.com/prefs/apps
@@ -17,10 +22,10 @@
 
 
 # Personal Modification instructions
-- The lines to modify as well as the instructions on modifying the code is within lines 11-19.
-- Simply add the information requested in each line between the quotes in each line.
-- You do not need to edit anything other than the variables in lines 11-19. The modifications you make in lines 11-19 will be reflected throughout the program.
-
+- RESPONSES is a dictionary.
+- The dictionary is formatted like this:
+    "ID of the flair you want removed" : "Comment that is left on removed post"
+- 
 
 
 # Setting up Praw.ini.
