@@ -24,7 +24,7 @@
 # Personal Modification instructions
 - RESPONSES (surrounded by {} ) is a dictionary.
 
-- To add another flairID : removal reason, uncomment line 15 and fill it in with the same format. If you wish to add more than what is provided, copy and paste one of the previous entries and follow the same format.
+- To add another flairID : removal reason, uncomment line 15 and fill it in with the same format. If you wish to add more than the lines provided, copy and paste one of the previous entries and follow the same format. (Note: if the line starts with "#", it means it is commented and will not be seen by the program. remove the # if you want the search to be added to the criteria)
 
 - To get Flair ID, go to your Submission Flair page within your mod tools. For the flair you want to be removed, click "Copy ID" and replace "<Put_Flair_ID_Here>" with that ID you just copied.
 

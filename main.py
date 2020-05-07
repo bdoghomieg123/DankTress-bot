@@ -10,15 +10,17 @@ reddit = praw.Reddit('bot1')
 
 RESPONSES = {
 
-        "<Flair ID>" : "Flair1 Removal Comment",
         "<FLair ID>" : "Flair2 Removal Comment",
-        "<Flair ID>" : "Flair3 Removal Comment",
+        #"<Flair ID>" : "Flair3 Removal Comment",
+        #"<Flair ID>" : "Flair3 Removal Comment",
+        #"<Flair ID>" : "Flair3 Removal Comment",
+        #"<Flair ID>" : "Flair3 Removal Comment",
 
 
 }
 
 #Edit this line to the subreddit you want this bot to run on.
-subreddit = ""
+subreddit = "bdoghomieg123"
 
 """DO NOT EDIT BELOW THIS LINE!"""
 def main(subToScan):
@@ -58,9 +60,9 @@ def main(subToScan):
 
 
 
-                with open("posts_replied_to.txt", "w") as f:
-                    for post_id in posts_replied_to:
-                        f.write(post_id + "\n")
+            with open("posts_replied_to.txt", "w") as f:
+                for post_id in posts_replied_to:
+                    f.write(post_id + "\n")
 
 
 
