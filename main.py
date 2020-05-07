@@ -28,7 +28,7 @@ flairID2 = ""
 def flair2():
     if flairID2 != "":
         if submission.link_flair_template_id == flairID2:
-            comment = submission.reply(removalComment)
+            comment = submission.reply(removalComment2)
             print(f"bot removed and replied to {submission.title}\n\n")
             posts_replied_to.append(submission.id)
             try:
