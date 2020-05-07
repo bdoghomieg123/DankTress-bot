@@ -22,18 +22,14 @@
 
 
 # Personal Modification instructions
-- RESPONSES is a dictionary.
-
-- The dictionary is formatted like this:
-
-
- "ID of the flair you want removed" : "Comment that is left on removed post"
-
+- RESPONSES (surrounded by {}) is a dictionary.
 
 - To add another flairID : removal reason, uncomment line 15 and fill it in with the same format. If you wish to add more than what is provided, copy and paste one of the previous entries and follow the same format.
 
-- To get Flair ID, go to your Submission Flair page within your mod tools. For the flair you want to be removed, click "Copy ID" and replace "<Put_Flair_ID_Here>" with that ID you just copied. 
+- To get Flair ID, go to your Submission Flair page within your mod tools. For the flair you want to be removed, click "Copy ID" and replace "<Put_Flair_ID_Here>" with that ID you just copied.
 
+
+- If you have any questions or issues, DM u/kapow-bitch on reddit.
 
 
 # Setting up Praw.ini.
