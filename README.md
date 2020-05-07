@@ -24,7 +24,11 @@
 # Personal Modification instructions
 - RESPONSES is a dictionary.
 - The dictionary is formatted like this:
+
+
     "ID of the flair you want removed" : "Comment that is left on removed post"
+
+
 - 
 
 
