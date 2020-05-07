@@ -22,7 +22,7 @@ RESPONSES = {
 #Edit this line to the subreddit you want this bot to run on.
 subreddit = ""
 
-"""DO NOT EDIT BELOW THIS LINE!"""
+"""Do not Edit Below This Line"""
 def main(subToScan):
     print(f"Bot Logged in and searching r/{subreddit}")
     time.sleep(2)
